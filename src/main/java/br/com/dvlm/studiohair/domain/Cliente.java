@@ -1,5 +1,7 @@
 package br.com.dvlm.studiohair.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.io.Serializable;
@@ -9,6 +11,7 @@ import java.util.List;
 @Entity
 public class Cliente extends Pessoa implements Serializable {
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente") // foi mapeado pelo cliente
     private List<Agendamento> lista = new ArrayList<>();
 

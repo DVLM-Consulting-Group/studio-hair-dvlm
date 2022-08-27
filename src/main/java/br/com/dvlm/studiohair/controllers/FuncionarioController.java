@@ -1,6 +1,6 @@
 package br.com.dvlm.studiohair.controllers;
 
-import br.com.dvlm.studiohair.domain.Funcionario;
+import br.com.dvlm.studiohair.dtos.FuncionarioDTO;
 import br.com.dvlm.studiohair.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,8 @@ public class FuncionarioController {
     private FuncionarioService funcionarioService;
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Funcionario> buscarPeloId(@PathVariable Integer id){
-        Funcionario funcionario = funcionarioService.buscarPeloId(id);
-        return ResponseEntity.ok().body(funcionario);
+    public ResponseEntity<FuncionarioDTO> buscarPeloId(@PathVariable Integer id){
+        FuncionarioDTO funcionarioDTO = new FuncionarioDTO(funcionarioService.buscarPeloId(id));
+        return ResponseEntity.ok().body(funcionarioDTO);
     }
 }
