@@ -1,6 +1,17 @@
 package br.com.dvlm.studiohair.domain;
 
-public class Funcionario extends Pessoa{
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity(name = "TB_FUNCIONARIO")
+public class Funcionario extends Pessoa implements Serializable {
+
+    @OneToMany(mappedBy = "funcionario") // foi mapeado pelo funcionario
+
+    private List<Agendamento> lista = new ArrayList<>();
 
     public Funcionario() {
         super();
@@ -8,5 +19,13 @@ public class Funcionario extends Pessoa{
 
     public Funcionario(Integer id, String nome, String cpf, String telefone, String email) {
         super(id, nome, cpf, telefone, email);
+    }
+
+    public List<Agendamento> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<Agendamento> lista) {
+        this.lista = lista;
     }
 }

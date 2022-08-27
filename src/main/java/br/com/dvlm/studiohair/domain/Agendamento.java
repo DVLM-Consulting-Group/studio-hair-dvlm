@@ -2,20 +2,37 @@ package br.com.dvlm.studiohair.domain;
 
 import br.com.dvlm.studiohair.domain.enuns.Servico;
 import br.com.dvlm.studiohair.domain.enuns.Status;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+
+@Entity(name = "TB_AGENDAMENTO")
 public class Agendamento {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataAgendamento;
+
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataExServico;
+
     private Integer servico;
     private String observacoes;
     private Integer status;
+
+    @ManyToOne
+    @JoinColumn(name = "funcionario_id")               // cria coluna na base de dados referente ao funcionário
     private Funcionario funcionario;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     private BigDecimal valor;
 
