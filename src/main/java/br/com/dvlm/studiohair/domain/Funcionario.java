@@ -6,8 +6,7 @@ public class Funcionario extends Pessoa{
         super();
     }
 
-    public Funcionario(Integer id, String nome, String cpf, String telefone) {
-        super(id, nome, cpf, telefone);
+    public Funcionario(Integer id, String nome, String cpf, String telefone, String email) {
+        super(id, nome, cpf, telefone, email);
     }
-
 }

@@ -8,16 +8,18 @@ public abstract class Pessoa {
     private String nome;
     private String cpf;
     private String telefone;
+    private String email;
 
     public Pessoa() {
         super();
     }
 
-    public Pessoa(Integer id, String nome, String cpf, String telefone) {
+    public Pessoa(Integer id, String nome, String cpf, String telefone, String email) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
+        this.email = email;
     }
 
     public Integer getId() {
@@ -50,6 +52,14 @@ public abstract class Pessoa {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override
