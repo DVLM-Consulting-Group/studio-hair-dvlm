@@ -49,7 +49,7 @@ public class Agendamento {
         this.id = id;
         this.valor = valor;
         this.setDataAgendamento(LocalDateTime.now());
-        this.servico = (servico == null) ? 0 : servico.getCod();
+        this.servico = (servico == null) ? 5 : servico.getCod();
         this.observacoes = observacoes;
         this.status = (status == null) ? 0 : status.getCod();
         this.funcionario = funcionario;
