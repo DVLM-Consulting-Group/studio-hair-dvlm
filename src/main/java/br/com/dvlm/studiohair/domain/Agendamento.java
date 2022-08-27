@@ -57,7 +57,6 @@ public class Agendamento {
     }
 
 
-
     public Integer getId() {
         return id;
     }

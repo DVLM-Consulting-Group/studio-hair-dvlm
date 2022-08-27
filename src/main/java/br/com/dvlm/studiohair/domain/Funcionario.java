@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name = "TB_FUNCIONARIO")
+@Entity
 public class Funcionario extends Pessoa implements Serializable {
 
     @OneToMany(mappedBy = "funcionario") // foi mapeado pelo funcionario
