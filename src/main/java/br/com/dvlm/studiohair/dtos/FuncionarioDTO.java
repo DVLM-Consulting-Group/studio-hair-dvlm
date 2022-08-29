@@ -1,6 +1,7 @@
 package br.com.dvlm.studiohair.dtos;
 
 import br.com.dvlm.studiohair.domain.Funcionario;
+import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 
@@ -10,8 +11,8 @@ public class FuncionarioDTO implements Serializable {
     private Integer id;
     private String nome;
 
-    /*@CPF
-    private String cpf;*/
+    @CPF
+    private String cpf;
     private String telefone;
     private String email;
 
@@ -22,7 +23,7 @@ public class FuncionarioDTO implements Serializable {
     public FuncionarioDTO(Funcionario obj) {
         this.id = obj.getId();
         this.nome = obj.getNome();
-        /*this.cpf = obj.getCpf();*/
+        this.cpf = obj.getCpf();
         this.telefone = obj.getTelefone();
         this.email = obj.getEmail();
     }
@@ -43,13 +44,13 @@ public class FuncionarioDTO implements Serializable {
         this.nome = nome;
     }
 
-    /*public String getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }*/
+    }
 
     public String getTelefone() {
         return telefone;

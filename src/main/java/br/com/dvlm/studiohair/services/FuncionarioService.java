@@ -1,6 +1,7 @@
 package br.com.dvlm.studiohair.services;
 
 import br.com.dvlm.studiohair.domain.Funcionario;
+import br.com.dvlm.studiohair.dtos.FuncionarioDTO;
 import br.com.dvlm.studiohair.repositories.FuncionarioRepository;
 import br.com.dvlm.studiohair.services.excecoes.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,12 @@ public class FuncionarioService {
 
     public List<Funcionario> buscarTodos() {
         return funcionarioRepository.findAll();
+    }
+
+    public Funcionario novoFuncionario(FuncionarioDTO funcionarioDTO){
+        Funcionario newFunc = new Funcionario(null, funcionarioDTO.getNome(), funcionarioDTO.getCpf(),
+                funcionarioDTO.getTelefone(), funcionarioDTO.getEmail());
+
+        return funcionarioRepository.save(newFunc);
     }
 }

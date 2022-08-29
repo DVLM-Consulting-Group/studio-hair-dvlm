@@ -1,14 +1,14 @@
 package br.com.dvlm.studiohair.controllers;
 
+import br.com.dvlm.studiohair.domain.Funcionario;
 import br.com.dvlm.studiohair.dtos.FuncionarioDTO;
 import br.com.dvlm.studiohair.services.FuncionarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,5 +32,15 @@ public class FuncionarioController {
                 .map(func -> new FuncionarioDTO(func)).collect(Collectors.toList());
 
         return ResponseEntity.ok().body(listaDTO);
+    }
+
+    @PostMapping
+    public ResponseEntity<Funcionario> novoFuncionario(@RequestBody FuncionarioDTO funcionarioDTO){
+        Funcionario newFunc = funcionarioService.novoFuncionario(funcionarioDTO);
+
+        // PASSAR URI DE ACESSO AO NOVO OBJ
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newFunc.getId()).toUri();
+
+        return ResponseEntity.created(uri).build();
     }
 }
