@@ -6,6 +6,7 @@ import java.io.Serializable;
 
 public class FuncionarioDTO implements Serializable {
 
+    private static final long serialVersionUID = 985925205593052617L;
     private Integer id;
     private String nome;
 

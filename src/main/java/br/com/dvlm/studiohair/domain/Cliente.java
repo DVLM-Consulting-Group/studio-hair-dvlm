@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 public class Cliente extends Pessoa implements Serializable {
 
+    private static final long serialVersionUID = -8810856798536130648L;
     @JsonIgnore
     @OneToMany(mappedBy = "cliente") // foi mapeado pelo cliente
     private List<Agendamento> lista = new ArrayList<>();

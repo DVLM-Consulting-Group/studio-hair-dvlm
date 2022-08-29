@@ -11,6 +11,7 @@ import java.util.List;
 @Entity
 public class Funcionario extends Pessoa implements Serializable {
 
+    private static final long serialVersionUID = -4528336606547875957L;
     @JsonIgnore //proteção contra serialização
     @OneToMany(mappedBy = "funcionario") // foi mapeado pelo funcionario
 
