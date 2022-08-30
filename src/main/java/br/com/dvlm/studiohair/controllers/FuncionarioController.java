@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +36,7 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Funcionario> criarNovoFuncionario(@RequestBody FuncionarioDTO funcionarioDTO){
+    public ResponseEntity<Funcionario> criarNovoFuncionario(@Valid @RequestBody FuncionarioDTO funcionarioDTO){
         Funcionario newFunc = funcionarioService.criarNovoFuncionario(funcionarioDTO);
 
         // PASSAR URI DE ACESSO AO NOVO OBJ
