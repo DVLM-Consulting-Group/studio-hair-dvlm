@@ -18,7 +18,7 @@ public class FuncionarioService {
     @Autowired
     private FuncionarioRepository funcionarioRepository;
 
-    public Funcionario buscarPeloId(Integer id){
+    public  Funcionario buscarPeloId(Integer id){
         Optional<Funcionario> obj = funcionarioRepository.findById(id); //pode encontrar ou não!
         return obj.orElseThrow(() -> new ObjectNotFoundException(
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Funcionario.class.getName()));
@@ -56,8 +56,18 @@ public class FuncionarioService {
         objVelho.setEmail(objDTO.getEmail());
 
         return funcionarioRepository.save(objVelho);
-
     }
+
+    public void delete(Integer id) {
+        Funcionario obj = buscarPeloId(id);
+
+        if (obj.getLista().size() > 0){
+            throw new DataIntegratyViolationException("Funcionário possui agendamento aberto, portanto não pode ser deletado!");
+        }
+
+        funcionarioRepository.deleteById(id);
+    }
+
 
     private Funcionario buscarPorCPF(FuncionarioDTO funcionarioDTO){
         Funcionario funcionario = funcionarioRepository.buscarPorCPF(funcionarioDTO.getCpf());

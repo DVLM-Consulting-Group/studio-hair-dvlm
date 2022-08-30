@@ -51,4 +51,10 @@ public class FuncionarioController {
 
         return ResponseEntity.ok().body(newObj);
     }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        funcionarioService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }
