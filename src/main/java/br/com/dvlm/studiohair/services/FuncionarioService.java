@@ -3,6 +3,7 @@ package br.com.dvlm.studiohair.services;
 import br.com.dvlm.studiohair.domain.Funcionario;
 import br.com.dvlm.studiohair.dtos.FuncionarioDTO;
 import br.com.dvlm.studiohair.repositories.FuncionarioRepository;
+import br.com.dvlm.studiohair.services.excecoes.DataIntegratyViolationException;
 import br.com.dvlm.studiohair.services.excecoes.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,10 +27,24 @@ public class FuncionarioService {
         return funcionarioRepository.findAll();
     }
 
-    public Funcionario novoFuncionario(FuncionarioDTO funcionarioDTO){
+    public Funcionario criarNovoFuncionario(FuncionarioDTO funcionarioDTO){
+
+        if (buscarPorCPF(funcionarioDTO) != null){
+            throw new DataIntegratyViolationException(
+                    "CPF já cadastrado na base de dados!");      // exception de INTEGRIDADE DE DADOS
+        }
+
         Funcionario newFunc = new Funcionario(null, funcionarioDTO.getNome(), funcionarioDTO.getCpf(),
                 funcionarioDTO.getTelefone(), funcionarioDTO.getEmail());
 
         return funcionarioRepository.save(newFunc);
+    }
+
+    private Funcionario buscarPorCPF(FuncionarioDTO funcionarioDTO){
+        Funcionario funcionario = funcionarioRepository.buscarPorCPF(funcionarioDTO.getCpf());
+        if ( funcionario != null){
+            return funcionario;
+        }
+        return null;
     }
 }

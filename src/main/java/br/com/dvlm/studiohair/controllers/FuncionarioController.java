@@ -35,8 +35,8 @@ public class FuncionarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Funcionario> novoFuncionario(@RequestBody FuncionarioDTO funcionarioDTO){
-        Funcionario newFunc = funcionarioService.novoFuncionario(funcionarioDTO);
+    public ResponseEntity<Funcionario> criarNovoFuncionario(@RequestBody FuncionarioDTO funcionarioDTO){
+        Funcionario newFunc = funcionarioService.criarNovoFuncionario(funcionarioDTO);
 
         // PASSAR URI DE ACESSO AO NOVO OBJ
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newFunc.getId()).toUri();
