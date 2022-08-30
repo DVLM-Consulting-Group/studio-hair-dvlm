@@ -1,8 +1,10 @@
 package br.com.dvlm.studiohair.services;
 
 import br.com.dvlm.studiohair.domain.Funcionario;
+import br.com.dvlm.studiohair.domain.Pessoa;
 import br.com.dvlm.studiohair.dtos.FuncionarioDTO;
 import br.com.dvlm.studiohair.repositories.FuncionarioRepository;
+import br.com.dvlm.studiohair.repositories.PessoaRepository;
 import br.com.dvlm.studiohair.services.excecoes.DataIntegratyViolationException;
 import br.com.dvlm.studiohair.services.excecoes.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class FuncionarioService {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    private PessoaRepository pessoaRepository;
 
     public  Funcionario buscarPeloId(Integer id){
         Optional<Funcionario> obj = funcionarioRepository.findById(id); //pode encontrar ou não!
@@ -69,10 +74,10 @@ public class FuncionarioService {
     }
 
 
-    private Funcionario buscarPorCPF(FuncionarioDTO funcionarioDTO){
-        Funcionario funcionario = funcionarioRepository.buscarPorCPF(funcionarioDTO.getCpf());
-        if ( funcionario != null){
-            return funcionario;
+    private Pessoa buscarPorCPF(FuncionarioDTO objDTO){
+        Pessoa obj = pessoaRepository.buscarPorCPF(objDTO.getCpf());
+        if ( obj != null){
+            return obj;
         }
         return null;
     }
