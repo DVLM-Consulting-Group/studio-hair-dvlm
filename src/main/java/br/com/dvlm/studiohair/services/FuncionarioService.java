@@ -8,6 +8,7 @@ import br.com.dvlm.studiohair.services.excecoes.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +41,24 @@ public class FuncionarioService {
         return funcionarioRepository.save(newFunc);
     }
 
+
+    public Funcionario update(Integer id, @Valid FuncionarioDTO objDTO) {
+        Funcionario objVelho = buscarPeloId(id);
+
+        if (buscarPorCPF(objDTO) != null && buscarPorCPF(objDTO).getId() != id){
+            throw new DataIntegratyViolationException(
+                    "CPF já cadastrado na base de dados!");
+        }
+
+        objVelho.setNome(objDTO.getNome());
+        objVelho.setCpf(objDTO.getCpf());
+        objVelho.setTelefone(objDTO.getTelefone());
+        objVelho.setEmail(objDTO.getEmail());
+
+        return funcionarioRepository.save(objVelho);
+
+    }
+
     private Funcionario buscarPorCPF(FuncionarioDTO funcionarioDTO){
         Funcionario funcionario = funcionarioRepository.buscarPorCPF(funcionarioDTO.getCpf());
         if ( funcionario != null){
@@ -47,4 +66,5 @@ public class FuncionarioService {
         }
         return null;
     }
+
 }

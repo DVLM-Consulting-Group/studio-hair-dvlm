@@ -12,6 +12,7 @@ import java.util.Objects;
 @Entity(name = "TB_PESSOA")
 public abstract class Pessoa implements Serializable {
 
+    private static final long serialVersionUID = 4942029834872077737L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
