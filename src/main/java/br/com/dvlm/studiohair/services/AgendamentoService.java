@@ -6,6 +6,7 @@ import br.com.dvlm.studiohair.services.excecoes.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,5 +19,9 @@ public class AgendamentoService {
         Optional<Agendamento> obj = repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Agendamento não encontrado! Id: " +
                 id + ", Tipo: " + Agendamento.class.getName()));
+    }
+
+    public List<Agendamento> mostrarTodos(){
+        return repository.findAll();
     }
 }

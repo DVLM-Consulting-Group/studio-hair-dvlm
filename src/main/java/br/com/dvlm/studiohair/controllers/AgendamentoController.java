@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping(value = "/agendamentos")
 public class AgendamentoController {
@@ -20,5 +23,14 @@ public class AgendamentoController {
     public ResponseEntity<AgendamentoDTO> buscaPeloId(@PathVariable Integer id){
         AgendamentoDTO obj = new AgendamentoDTO(service.buscaPeloId(id));
         return ResponseEntity.ok().body(obj);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<AgendamentoDTO>> mostrarTodos(){
+
+        List<AgendamentoDTO> lista = service.mostrarTodos().stream()
+                .map(obj -> new AgendamentoDTO(obj)).collect(Collectors.toList());
+
+        return ResponseEntity.ok().body(lista);
     }
 }
