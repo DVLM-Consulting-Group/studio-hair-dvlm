@@ -3,6 +3,7 @@ package br.com.dvlm.studiohair.dtos;
 import br.com.dvlm.studiohair.domain.Agendamento;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -19,10 +20,16 @@ public class AgendamentoDTO implements Serializable {
     private LocalDateTime dataExServico;
 
     private Integer servico;
+
+    @NotEmpty(message = "O campo é obrigatério!")
     private String observacoes;
     private Integer status;
+
     private Integer funcionario;
+
     private Integer cliente;
+
+//    @NotNull
     private BigDecimal valor;
 
     public AgendamentoDTO() {
