@@ -13,6 +13,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")   // faz com q api esteja disponivel para requisições de mult. fontes
 @RestController
 @RequestMapping(value = "/clientes")
 public class ClienteController {
