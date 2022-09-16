@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+
+// classe agendamento
 public class AgendamentoDTO implements Serializable {
     private static final long serialVersionUID = 6445065446023076514L;
 
