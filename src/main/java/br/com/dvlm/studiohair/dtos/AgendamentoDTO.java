@@ -1,6 +1,8 @@
 package br.com.dvlm.studiohair.dtos;
 
 import br.com.dvlm.studiohair.domain.Agendamento;
+import br.com.dvlm.studiohair.domain.enuns.Servico;
+import br.com.dvlm.studiohair.domain.enuns.Status;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotEmpty;
@@ -72,8 +74,8 @@ public class AgendamentoDTO implements Serializable {
         this.dataExServico = dataExServico;
     }
 
-    public Integer getServico() {
-        return servico;
+    public Servico getServico() {
+        return Servico.toEnum(this.servico);
     }
 
     public void setServico(Integer servico) {
@@ -88,8 +90,8 @@ public class AgendamentoDTO implements Serializable {
         this.observacoes = observacoes;
     }
 
-    public Integer getStatus() {
-        return status;
+    public Status getStatus() {
+        return Status.toEnum(this.status);
     }
 
     public void setStatus(Integer status) {

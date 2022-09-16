@@ -49,8 +49,8 @@ public class AgendamentoService {
         Agendamento newObj = new Agendamento();
         newObj.setId(obj.getId());
         newObj.setObservacoes(obj.getObservacoes());
-        newObj.setServico(Servico.toEnum(obj.getServico()));
-        newObj.setStatus(Status.toEnum(obj.getStatus()));
+        newObj.setServico(Servico.toEnum(obj.getServico().getCod()));
+        newObj.setStatus(Status.toEnum(obj.getStatus().getCod()));
         newObj.setValor(obj.getValor());
 
         Funcionario func = funcionarioService.buscarPeloId(obj.getFuncionario());
