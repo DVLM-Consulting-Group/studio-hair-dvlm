@@ -21,7 +21,7 @@ public class Agendamento {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataAgendamento;
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataExServico;
 
     private Integer servico;
