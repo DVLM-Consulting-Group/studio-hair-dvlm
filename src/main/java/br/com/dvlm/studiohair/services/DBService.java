@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Service
@@ -30,7 +30,7 @@ public class DBService {
 
     public void instanciaDB() {
 
-        LocalDate data = LocalDate.of(2022, 9, 20);
+        LocalDateTime data = LocalDateTime.of(2022, 9, 20, 6, 30);
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
 

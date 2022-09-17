@@ -8,7 +8,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 
@@ -21,8 +20,8 @@ public class AgendamentoDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataAgendamento;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataExServico;
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+    private LocalDateTime dataExServico;
 
     private Integer servico;
 
@@ -69,11 +68,11 @@ public class AgendamentoDTO implements Serializable {
         this.dataAgendamento = dataAgendamento;
     }
 
-    public LocalDate getDataExServico() {
+    public LocalDateTime getDataExServico() {
         return dataExServico;
     }
 
-    public void setDataExServico(LocalDate dataExServico) {
+    public void setDataExServico(LocalDateTime dataExServico) {
         this.dataExServico = dataExServico;
     }
 

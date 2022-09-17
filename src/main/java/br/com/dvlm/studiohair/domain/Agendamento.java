@@ -6,7 +6,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
@@ -22,7 +21,7 @@ public class Agendamento {
     private LocalDateTime dataAgendamento;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataExServico;
+    private LocalDateTime dataExServico;
 
     private Integer servico;
     private String observacoes;
@@ -45,7 +44,7 @@ public class Agendamento {
     }
 
     public Agendamento(Integer id, Servico servico, String observacoes, Status status, Funcionario funcionario,
-                       Cliente cliente, BigDecimal valor, LocalDate dataExServico) {
+                       Cliente cliente, BigDecimal valor, LocalDateTime dataExServico) {
         super();
         this.id = id;
         this.valor = valor;
@@ -75,11 +74,11 @@ public class Agendamento {
         this.dataAgendamento = dataAgendamento;
     }
 
-    public LocalDate getDataExServico() {
+    public LocalDateTime getDataExServico() {
         return dataExServico;
     }
 
-    public void setDataExServico(LocalDate dataExServico) {
+    public void setDataExServico(LocalDateTime dataExServico) {
         this.dataExServico = dataExServico;
     }
 
