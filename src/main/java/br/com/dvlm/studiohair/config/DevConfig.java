@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 
-import java.text.ParseException;
-
 @Configuration
 @Profile("dev")
 public class DevConfig {
@@ -20,7 +18,7 @@ public class DevConfig {
     private String ddl;
 
     @Bean
-    public boolean InstanciaDB() throws ParseException {
+    public boolean InstanciaDB() {
         if (ddl.equals("create")){
             this.dbService.instanciaDB();
         }

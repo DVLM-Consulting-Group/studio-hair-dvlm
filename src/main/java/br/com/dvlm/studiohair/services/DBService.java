@@ -12,8 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Arrays;
 
 @Service
@@ -28,7 +28,10 @@ public class DBService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public void instanciaDB() throws ParseException {
+    public void instanciaDB() {
+
+        LocalDate data = LocalDate.of(2022, 9, 20);
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyy");
 
         Funcionario f1 = new Funcionario(null, "Luan Braz", "059.483.300-01", "(12) 99214-5667",
@@ -37,7 +40,7 @@ public class DBService {
                 "maria_email@email.com.br");
 
         Agendamento ag1 = new Agendamento(null, Servico.CORTE, "Testando sistema", Status.ABERTO, f1, c1,
-                new BigDecimal(50.00), sdf.parse("15/08/2022") );
+                new BigDecimal(50.00), data );
 
         f1.getLista().add(ag1);
         c1.getLista().add(ag1);

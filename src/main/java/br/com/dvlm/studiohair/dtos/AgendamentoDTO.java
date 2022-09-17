@@ -8,8 +8,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 
 // classe agendamento
@@ -22,7 +22,7 @@ public class AgendamentoDTO implements Serializable {
     private LocalDateTime dataAgendamento;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private Date dataExServico;
+    private LocalDate dataExServico;
 
     private Integer servico;
 
@@ -69,11 +69,11 @@ public class AgendamentoDTO implements Serializable {
         this.dataAgendamento = dataAgendamento;
     }
 
-    public Date getDataExServico() {
+    public LocalDate getDataExServico() {
         return dataExServico;
     }
 
-    public void setDataExServico(Date dataExServico) {
+    public void setDataExServico(LocalDate dataExServico) {
         this.dataExServico = dataExServico;
     }
 
