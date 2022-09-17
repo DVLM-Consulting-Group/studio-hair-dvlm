@@ -50,6 +50,7 @@ public class AgendamentoService {
         newObj.setId(obj.getId());
         newObj.setObservacoes(obj.getObservacoes());
         newObj.setServico(Servico.toEnum(obj.getServico().getCod()));
+        newObj.setDataExServico(obj.getDataExServico());
         newObj.setStatus(Status.toEnum(obj.getStatus().getCod()));
         newObj.setValor(obj.getValor());
 
