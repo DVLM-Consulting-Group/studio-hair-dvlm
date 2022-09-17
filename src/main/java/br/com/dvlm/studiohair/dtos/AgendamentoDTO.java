@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 
 // classe agendamento
@@ -21,7 +22,7 @@ public class AgendamentoDTO implements Serializable {
     private LocalDateTime dataAgendamento;
 
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime dataExServico;
+    private Date dataExServico;
 
     private Integer servico;
 
@@ -68,11 +69,11 @@ public class AgendamentoDTO implements Serializable {
         this.dataAgendamento = dataAgendamento;
     }
 
-    public LocalDateTime getDataExServico() {
+    public Date getDataExServico() {
         return dataExServico;
     }
 
-    public void setDataExServico(LocalDateTime dataExServico) {
+    public void setDataExServico(Date dataExServico) {
         this.dataExServico = dataExServico;
     }
 
