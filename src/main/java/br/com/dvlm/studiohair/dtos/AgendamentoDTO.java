@@ -20,12 +20,12 @@ public class AgendamentoDTO implements Serializable {
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataAgendamento;
 
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
+//    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime dataExServico;
 
     private Integer servico;
 
-    @NotEmpty(message = "O campo é obrigatério!")
+//    @NotEmpty(message = "O campo é obrigatério!")
     private String observacoes;
     private Integer status;
 
